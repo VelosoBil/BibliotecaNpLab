@@ -1,7 +1,8 @@
 ﻿namespace BibliotecaNpLab.Models
 {
-    public class Usuario
+    public class UsuarioModel
     {
+        public int id { get; set; }
         public  int numerosocio { get; set; }
         public string login { get; set; }
         public string senha { get; set; }

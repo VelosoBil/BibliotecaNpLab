@@ -1,3 +1,8 @@
+using BibliotecaNpLab.Data;
+using BibliotecaNpLab.Repositorios;
+using BibliotecaNpLab.Repositorios.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
 namespace BibliotecaNpLab
 {
     public class Program
@@ -12,6 +17,13 @@ namespace BibliotecaNpLab
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddEntityFrameworkSqlServer()
+                .AddDbContext<BibliotecaDbContex>(
+                options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+                );
+            
+            builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+            builder.Services.AddScoped<ILivrosRepositorio, LivrosRepositorio>();
 
             var app = builder.Build();
 
