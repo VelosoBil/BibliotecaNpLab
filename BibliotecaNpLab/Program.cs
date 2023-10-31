@@ -21,6 +21,16 @@ namespace BibliotecaNpLab
                 .AddDbContext<BibliotecaDbContex>(
                 options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
                 );
+
+            builder.Services.AddCors(options => {
+                options.AddPolicy(name: "policynplb",
+                    policy =>
+                    {
+                        policy.WithOrigins("https://localhost:7059")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+            });
             
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             builder.Services.AddScoped<ILivrosRepositorio, LivrosRepositorio>();
@@ -33,6 +43,8 @@ namespace BibliotecaNpLab
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors("policynplb");
 
             app.UseHttpsRedirection();
 

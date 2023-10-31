@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BibliotecaNpLab.Migrations
 {
     [DbContext(typeof(BibliotecaDbContex))]
-    [Migration("20231028174614_InitialDB")]
-    partial class InitialDB
+    [Migration("20231031014846_Biblioteca")]
+    partial class Biblioteca
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,6 +22,42 @@ namespace BibliotecaNpLab.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("BibliotecaNpLab.Models.LivrosModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("autor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("biografia")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("editora")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("genero")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("titulo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Livros");
+                });
 
             modelBuilder.Entity("BibliotecaNpLab.Models.UsuarioModel", b =>
                 {
@@ -56,10 +92,18 @@ namespace BibliotecaNpLab.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("confirmasenha")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
                     b.Property<string>("endereco")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("func")
+                        .HasColumnType("bit");
 
                     b.Property<string>("generosfav")
                         .IsRequired()
@@ -82,8 +126,8 @@ namespace BibliotecaNpLab.Migrations
 
                     b.Property<string>("senha")
                         .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("uf")
                         .IsRequired()

@@ -39,10 +39,9 @@ namespace BibliotecaNpLab.Repositorios
                 throw new Exception($"Livro para o ID:{id} não encontrado!");
             }
 
-            livroporid.nomelivro = livros.nomelivro;
-            livroporid.genero = livros.genero;
+            livroporid.titulo = livros.titulo;
             livroporid.autor = livros.autor;
-            livroporid.datalancamento = livros.datalancamento;
+            livroporid.genero = livros.genero;
             livroporid.biografia = livros.biografia;
             livroporid.editora = livros.editora;
             _dbContex.Livros.Update(livroporid);
