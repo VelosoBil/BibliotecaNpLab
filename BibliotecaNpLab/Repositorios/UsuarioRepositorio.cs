@@ -38,12 +38,10 @@ namespace BibliotecaNpLab.Repositorios
             usuarioporid.cidade = usuario.cidade;
             usuarioporid.uf = usuario.uf;
             usuarioporid.celular = usuario.celular;
-            usuarioporid.numerosocio = usuario.numerosocio;
             usuarioporid.login = usuario.login;
             usuarioporid.senha = usuario.senha;
             usuarioporid.generosfav = usuario.generosfav;
             usuarioporid.autoresfav = usuario.autoresfav;
-            usuarioporid.func = usuario.func;
             _dbContex.Usuarios.Update(usuarioporid);
             await _dbContex.SaveChangesAsync();
             return usuarioporid;
@@ -52,10 +50,6 @@ namespace BibliotecaNpLab.Repositorios
         public async Task<UsuarioModel> Adicionar (UsuarioModel usuario)
         {
             await _dbContex.Usuarios.AddAsync(usuario);
-
-            if (!usuario.senha.Equals(usuario.confirmasenha))
-                throw new Exception($"Senha não confere com a confirmação de senha favor verificar!");
-
             await _dbContex.SaveChangesAsync();
             return usuario; 
         }

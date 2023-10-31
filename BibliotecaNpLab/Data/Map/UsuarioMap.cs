@@ -16,7 +16,6 @@ namespace BibliotecaNpLab.Data.Map
             builder.Property(x => x.cidade).IsRequired().HasMaxLength(100);
             builder.Property(x => x.uf).IsRequired().HasMaxLength(2);
             builder.Property(x => x.celular).IsRequired().HasMaxLength(14);
-            builder.Property(x => x.numerosocio).IsRequired().HasMaxLength(500);
             builder.Property(x => x.login).IsRequired().HasMaxLength(10);
             builder.Property(x => x.senha).IsRequired().HasMaxLength(20);
             builder.Property(x => x.confirmasenha).IsRequired().HasMaxLength(20);

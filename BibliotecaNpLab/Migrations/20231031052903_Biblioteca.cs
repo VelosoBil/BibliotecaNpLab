@@ -32,7 +32,6 @@ namespace BibliotecaNpLab.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    numerosocio = table.Column<int>(type: "int", maxLength: 500, nullable: false),
                     login = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     senha = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     confirmasenha = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),

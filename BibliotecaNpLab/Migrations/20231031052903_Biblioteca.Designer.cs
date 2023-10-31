@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BibliotecaNpLab.Migrations
 {
     [DbContext(typeof(BibliotecaDbContex))]
-    [Migration("20231031014846_Biblioteca")]
+    [Migration("20231031052903_Biblioteca")]
     partial class Biblioteca
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -119,10 +119,6 @@ namespace BibliotecaNpLab.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("numerosocio")
-                        .HasMaxLength(500)
-                        .HasColumnType("int");
 
                     b.Property<string>("senha")
                         .IsRequired()

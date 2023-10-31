@@ -118,10 +118,6 @@ namespace BibliotecaNpLab.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("numerosocio")
-                        .HasMaxLength(500)
-                        .HasColumnType("int");
-
                     b.Property<string>("senha")
                         .IsRequired()
                         .HasMaxLength(20)
